@@ -1,8 +1,7 @@
 """
 MNIST Handwritten Digit Recognition using CNN
 Built with Keras/TensorFlow to classify MNIST handwritten digits.
-This version includes fallback to synthetic data for demonstration when MNIST is unavailable.
-Achieves over 98% validation accuracy with real MNIST data.
+This version generates a synthetic dataset for demonstration when MNIST is unavailable.
 """
 
 import tensorflow as tf

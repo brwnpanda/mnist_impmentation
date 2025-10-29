@@ -49,12 +49,25 @@ python mnist_cnn.py
 ```
 
 This will:
-1. Load and preprocess the MNIST dataset
+1. Load and preprocess the MNIST dataset (or generate synthetic data if unavailable)
 2. Create the CNN model
 3. Train the model for 15 epochs
 4. Display training progress and final accuracy
 5. Generate visualization plots
 6. Save the trained model
+
+### Testing the Model
+
+Run the test script to verify the model:
+```bash
+python test_model.py
+```
+
+This validates:
+- Model loading and saving
+- Model architecture
+- Prediction capabilities
+- Batch processing
 
 ### Output Files
 
@@ -77,18 +90,21 @@ The MNIST dataset contains:
 - 10,000 test images
 - 28x28 grayscale images of handwritten digits (0-9)
 
-The dataset is automatically downloaded via Keras when running the script.
+The dataset is automatically downloaded via Keras when running the script. If the MNIST dataset is unavailable (e.g., due to network restrictions), the script will automatically generate a synthetic MNIST-like dataset for demonstration purposes. While the synthetic data demonstrates the CNN architecture and training process, the actual >98% accuracy target is achieved with the real MNIST dataset.
 
 ## Project Structure
 
 ```
 mnist_impmentation/
-├── README.md                 # Project documentation
-├── requirements.txt          # Python dependencies
-├── mnist_cnn.py             # Main training script
-├── .gitignore               # Git ignore rules
-└── training_history.png     # Generated after training
-└── predictions.png          # Generated after training
+├── README.md                    # Project documentation
+├── requirements.txt             # Python dependencies
+├── mnist_cnn.py                # Main training script
+├── mnist_cnn_synthetic.py      # Alternative version with synthetic data
+├── test_model.py               # Model testing script
+├── .gitignore                  # Git ignore rules
+├── training_history.png        # Generated after training
+├── predictions.png             # Generated after training
+└── mnist_cnn_model.h5          # Generated after training
 ```
 
 ## Key Features

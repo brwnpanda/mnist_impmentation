@@ -65,11 +65,11 @@ The model is a Sequential Convolutional Neural Network (CNN) designed specifical
 - **Parameters**: 1,290 (128×10 + 10 biases)
 - **Purpose**: Produces probability distribution over 10 digit classes
 
-## Total Parameters
+### Total Parameters (Current Architecture)
 
 - **Total**: 225,036 parameters
 - **Trainable**: 225,034 parameters
-- **Non-trainable**: 0 parameters
+- **Non-trainable**: 0 parameters (no batch normalization in this design)
 - **Model Size**: ~879 KB
 
 ## Training Configuration

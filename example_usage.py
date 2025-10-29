@@ -25,6 +25,27 @@ def load_trained_model(model_path='mnist_cnn_model.h5'):
     return model
 
 
+def prepare_image_for_prediction(image):
+    """
+    Prepare an image for model prediction by ensuring correct shape.
+    
+    Args:
+        image: Image array (can be 2D, 3D, or 4D)
+    
+    Returns:
+        Image array with shape (1, 28, 28, 1)
+    """
+    # Ensure image has channel dimension
+    if image.shape == (28, 28):
+        image = np.expand_dims(image, -1)  # Add channel dimension
+    
+    # Ensure image has batch dimension
+    if len(image.shape) == 3:
+        image = np.expand_dims(image, 0)  # Add batch dimension
+    
+    return image
+
+
 def predict_digit(model, image):
     """
     Predict the digit in a given image.
@@ -36,15 +57,11 @@ def predict_digit(model, image):
     Returns:
         Tuple of (predicted_digit, confidence)
     """
-    # Ensure image has correct shape
-    if image.shape == (28, 28):
-        image = np.expand_dims(image, -1)  # Add channel dimension
-    
-    if len(image.shape) == 3:
-        image = np.expand_dims(image, 0)  # Add batch dimension
+    # Prepare image for prediction
+    image_input = prepare_image_for_prediction(image)
     
     # Make prediction
-    prediction = model.predict(image, verbose=0)
+    prediction = model.predict(image_input, verbose=0)
     predicted_digit = np.argmax(prediction[0])
     confidence = prediction[0][predicted_digit]
     
@@ -139,12 +156,8 @@ def visualize_prediction(model, image, true_label=None, save_path='example_predi
     # Make prediction
     predicted_digit, confidence = predict_digit(model, image)
     
-    # Get all class probabilities
-    if len(image.shape) == 2:
-        image_input = np.expand_dims(np.expand_dims(image, -1), 0)
-    else:
-        image_input = np.expand_dims(image, 0)
-    
+    # Get all class probabilities using the same helper
+    image_input = prepare_image_for_prediction(image)
     probabilities = model.predict(image_input, verbose=0)[0]
     
     # Create visualization

@@ -27,6 +27,10 @@ The CNN consists of:
    - Dropout layer (0.5 rate for regularization)
    - Dense output layer (10 units, Softmax activation)
 
+Total parameters: 225,036 (~879 KB)
+
+For detailed architecture explanation, see [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Requirements
 
 - Python 3.8+
@@ -69,6 +73,18 @@ This validates:
 - Prediction capabilities
 - Batch processing
 
+### Using the Model
+
+Run the example script to see how to use the trained model:
+```bash
+python example_usage.py
+```
+
+This demonstrates:
+- Loading the saved model
+- Making predictions on new images
+- Visualizing predictions and probabilities
+
 ### Output Files
 
 After training, the following files are generated:
@@ -97,14 +113,16 @@ The dataset is automatically downloaded via Keras when running the script. If th
 ```
 mnist_impmentation/
 ├── README.md                    # Project documentation
+├── ARCHITECTURE.md              # Detailed CNN architecture explanation
 ├── requirements.txt             # Python dependencies
 ├── mnist_cnn.py                # Main training script
 ├── mnist_cnn_synthetic.py      # Alternative version with synthetic data
 ├── test_model.py               # Model testing script
+├── example_usage.py            # Example of using trained model
 ├── .gitignore                  # Git ignore rules
-├── training_history.png        # Generated after training
-├── predictions.png             # Generated after training
-└── mnist_cnn_model.h5          # Generated after training
+├── training_history.png        # Generated: training curves
+├── predictions.png             # Generated: sample predictions
+└── mnist_cnn_model.h5          # Generated: trained model
 ```
 
 ## Key Features
